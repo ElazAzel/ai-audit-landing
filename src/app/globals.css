@@ -12,8 +12,6 @@
   --accent-light: #dbeafe;
   --accent-glow: #06b6d4;
   --accent-glow-light: #cffafe;
-  --violet: #7c3aed;
-  --violet-light: #ede9fe;
   --success: #16a34a;
   --warn: #d97706;
   --danger: #dc2626;
@@ -36,8 +34,6 @@
   --color-accent-light: var(--accent-light);
   --color-accent-glow: var(--accent-glow);
   --color-accent-glow-light: var(--accent-glow-light);
-  --color-violet: var(--violet);
-  --color-violet-light: var(--violet-light);
   --color-success: var(--success);
   --color-warn: var(--warn);
   --color-danger: var(--danger);
@@ -56,6 +52,17 @@ body {
 ::selection {
   background: var(--accent-light);
   color: var(--accent);
+}
+
+button,
+a {
+  outline-offset: 3px;
+}
+
+button:focus-visible,
+a:focus-visible,
+[role="button"]:focus-visible {
+  outline: 2px solid var(--accent);
 }
 
 @media (prefers-reduced-motion: reduce) {

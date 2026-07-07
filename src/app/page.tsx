@@ -18,7 +18,10 @@ import { MessageCircle, Camera, Globe } from "lucide-react";
 export default function Home() {
   return (
     <>
-      <nav className="fixed top-0 z-40 w-full border-b border-border/60 bg-white/80 backdrop-blur-md">
+      <nav
+        data-od-id="site-nav"
+        className="fixed top-0 z-40 w-full border-b border-border/60 bg-white/80 backdrop-blur-md"
+      >
         <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 md:px-6">
           <span className="text-sm font-semibold tracking-tight text-fg">
             Ильяс Азелханов
@@ -49,7 +52,7 @@ export default function Home() {
         </div>
       </nav>
 
-      <main>
+      <main data-od-id="landing-main">
         <div className="block h-14 md:hidden" />
         <HeroSection />
         <ProblemSection />
@@ -64,9 +67,9 @@ export default function Home() {
         <FinalCTA />
       </main>
 
-      <footer className="border-t border-border bg-surface py-8">
+      <footer data-od-id="site-footer" className="border-t border-border bg-surface py-8">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-4 text-center text-xs text-muted md:flex-row md:text-left">
-          <p>Ильяс Азелханов · CEO LinkMAX</p>
+          <p>Ильяс Азелханов - CEO LinkMAX</p>
           <div className="flex items-center gap-4">
             <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-muted transition-colors hover:text-accent">
               <Camera className="h-3.5 w-3.5" /> Instagram
@@ -80,7 +83,10 @@ export default function Home() {
 
       <StickyCTA />
 
-      <div className="fixed bottom-0 left-0 right-0 z-40 border-t border-border bg-white md:hidden">
+      <div
+        data-od-id="mobile-whatsapp-bar"
+        className="fixed bottom-0 left-0 right-0 z-40 border-t border-border bg-white md:hidden"
+      >
         <div className="flex items-center justify-center p-2">
           <a
             href={WHATSAPP_LINK}

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 import { calculatorOptions, WHATSAPP_LINK } from "@/lib/data";
 import { Calculator, MessageCircle } from "lucide-react";
 
@@ -33,6 +33,7 @@ function getPackageForNeed(need: string): string {
 
 export default function CalculatorSection() {
   const [form, setForm] = useState<FormState>(initialState);
+  const prefersReducedMotion = useReducedMotion();
 
   const result = useMemo(() => {
     if (!form.clientType || !form.teamSize || !form.need) return null;
@@ -86,11 +87,12 @@ export default function CalculatorSection() {
   return (
     <section
       id="calculator"
+      data-od-id="calculator-section"
       className="bg-gradient-to-b from-bg to-accent-light/20 py-16 md:py-24"
     >
       <div className="mx-auto max-w-7xl px-4 md:px-6">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
@@ -100,7 +102,7 @@ export default function CalculatorSection() {
             Рассчитайте примерную стоимость
           </h2>
           <p className="mx-auto mt-3 max-w-lg text-base leading-relaxed text-fg-2">
-            Заполните параметры — получите предварительный расчёт и
+            Заполните параметры - получите предварительный расчёт и
             рекомендуемый пакет
           </p>
         </motion.div>
@@ -215,7 +217,9 @@ export default function CalculatorSection() {
 
           <div>
             <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
+              initial={
+                prefersReducedMotion ? false : { opacity: 0, scale: 0.95 }
+              }
               animate={
                 result
                   ? { opacity: 1, scale: 1 }
@@ -239,7 +243,7 @@ export default function CalculatorSection() {
                     </p>
                     <motion.p
                       key={result.price}
-                      initial={{ opacity: 0, y: 10 }}
+                      initial={prefersReducedMotion ? false : { opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       className="text-4xl font-bold tracking-tight text-fg"
                     >

@@ -1,15 +1,17 @@
 "use client";
 
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 import { packages, WHATSAPP_LINK } from "@/lib/data";
 import { Check, Sparkles, MessageCircle } from "lucide-react";
 
 export default function PricingSection() {
+  const prefersReducedMotion = useReducedMotion();
+
   return (
-    <section id="pricing" className="py-16 md:py-24">
+    <section id="pricing" data-od-id="pricing-section" className="py-16 md:py-24">
       <div className="mx-auto max-w-7xl px-4 md:px-6">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
@@ -28,7 +30,7 @@ export default function PricingSection() {
           {packages.map((pkg, i) => (
             <motion.div
               key={pkg.id}
-              initial={{ opacity: 0, y: 24 }}
+              initial={prefersReducedMotion ? false : { opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{

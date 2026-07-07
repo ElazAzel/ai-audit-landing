@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { motion, AnimatePresence, useReducedMotion } from "motion/react";
 import { faqItems } from "@/lib/data";
 import { ChevronDown } from "lucide-react";
 
@@ -14,10 +14,11 @@ function FAQItem({
 }) {
   const [open, setOpen] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
+  const prefersReducedMotion = useReducedMotion();
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 10 }}
+      initial={prefersReducedMotion ? false : { opacity: 0, y: 10 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.1 }}
       transition={{ duration: 0.4, delay: index * 0.05 }}
@@ -45,9 +46,11 @@ function FAQItem({
           <motion.div
             id={`faq-answer-${index}`}
             ref={contentRef}
-            initial={{ height: 0, opacity: 0 }}
+            initial={prefersReducedMotion ? false : { height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
+            exit={
+              prefersReducedMotion ? { opacity: 0 } : { height: 0, opacity: 0 }
+            }
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
             className="overflow-hidden"
           >
@@ -62,11 +65,13 @@ function FAQItem({
 }
 
 export default function FAQSection() {
+  const prefersReducedMotion = useReducedMotion();
+
   return (
-    <section className="py-16 md:py-24">
+    <section data-od-id="faq-section" className="py-16 md:py-24">
       <div className="mx-auto max-w-7xl px-4 md:px-6">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}

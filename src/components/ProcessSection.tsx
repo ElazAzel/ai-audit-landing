@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useInView } from "motion/react";
+import { motion, useInView, useReducedMotion } from "motion/react";
 import { processSteps } from "@/lib/data";
 import { Clock } from "lucide-react";
 
@@ -14,12 +14,21 @@ function ProcessStep({
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
+  const prefersReducedMotion = useReducedMotion();
 
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-      animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
+      initial={
+        prefersReducedMotion
+          ? false
+          : { opacity: 0, x: index % 2 === 0 ? -20 : 20 }
+      }
+      animate={
+        isInView || prefersReducedMotion
+          ? { opacity: 1, x: 0 }
+          : { opacity: 0, x: index % 2 === 0 ? -20 : 20 }
+      }
       transition={{
         duration: 0.6,
         delay: index * 0.12,
@@ -52,11 +61,16 @@ function ProcessStep({
 }
 
 export default function ProcessSection() {
+  const prefersReducedMotion = useReducedMotion();
+
   return (
-    <section className="bg-gradient-to-b from-accent-light/20 to-bg py-16 md:py-24">
+    <section
+      data-od-id="process-section"
+      className="bg-gradient-to-b from-accent-light/20 to-bg py-16 md:py-24"
+    >
       <div className="mx-auto max-w-7xl px-4 md:px-6">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
@@ -66,7 +80,7 @@ export default function ProcessSection() {
             Как проходит работа
           </h2>
           <p className="mx-auto mt-3 max-w-lg text-base leading-relaxed text-fg-2">
-            Пять этапов — от первой диагностики до работающего AI-сценария в
+            Пять этапов - от первой диагностики до работающего AI-сценария в
             команде
           </p>
         </motion.div>

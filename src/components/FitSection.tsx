@@ -1,15 +1,20 @@
 "use client";
 
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 import { fits } from "@/lib/data";
 import { ThumbsUp, ThumbsDown } from "lucide-react";
 
 export default function FitSection() {
+  const prefersReducedMotion = useReducedMotion();
+
   return (
-    <section className="bg-gradient-to-b from-bg to-accent-light/20 py-16 md:py-24">
+    <section
+      data-od-id="fit-section"
+      className="bg-gradient-to-b from-bg to-accent-light/20 py-16 md:py-24"
+    >
       <div className="mx-auto max-w-7xl px-4 md:px-6">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
@@ -19,14 +24,14 @@ export default function FitSection() {
             Кому подходит и не подходит
           </h2>
           <p className="mx-auto mt-3 max-w-lg text-base leading-relaxed text-fg-2">
-            Честно расскажу, когда моя помощь принесёт результат, а когда —
+            Честно расскажу, когда моя помощь принесёт результат, а когда -
             нет
           </p>
         </motion.div>
 
         <div className="mx-auto grid max-w-5xl gap-6 md:grid-cols-2">
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
+            initial={prefersReducedMotion ? false : { opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
@@ -53,7 +58,7 @@ export default function FitSection() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
+            initial={prefersReducedMotion ? false : { opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}

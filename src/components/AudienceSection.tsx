@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { motion, AnimatePresence, useReducedMotion } from "motion/react";
 import { audienceSegments } from "@/lib/data";
 import {
   GraduationCap,
@@ -20,14 +20,15 @@ const iconMap: Record<string, React.ReactNode> = {
 
 export default function AudienceSection() {
   const [active, setActive] = useState(audienceSegments[0].id);
+  const prefersReducedMotion = useReducedMotion();
 
   const current = audienceSegments.find((s) => s.id === active)!;
 
   return (
-    <section className="py-16 md:py-24">
+    <section data-od-id="audience-section" className="py-16 md:py-24">
       <div className="mx-auto max-w-7xl px-4 md:px-6">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
@@ -37,7 +38,7 @@ export default function AudienceSection() {
             Для кого это
           </h2>
           <p className="mx-auto mt-3 max-w-lg text-base leading-relaxed text-fg-2">
-            Выберите свой тип бизнеса — покажу подходящие сценарии внедрения
+            Выберите свой тип бизнеса - покажу подходящие сценарии внедрения
           </p>
         </motion.div>
 
@@ -70,9 +71,9 @@ export default function AudienceSection() {
           <AnimatePresence mode="wait">
             <motion.div
               key={active}
-              initial={{ opacity: 0, y: 10 }}
+              initial={prefersReducedMotion ? false : { opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
+              exit={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, y: -10 }}
               transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
               className="rounded-xl border border-border bg-surface p-6 shadow-sm md:p-8"
             >

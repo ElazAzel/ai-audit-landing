@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 import { credibilityCards } from "@/lib/data";
 import { CheckCircle } from "lucide-react";
 
@@ -14,11 +14,13 @@ const approachSteps = [
 ];
 
 export default function WhyMeSection() {
+  const prefersReducedMotion = useReducedMotion();
+
   return (
-    <section className="py-16 md:py-24">
+    <section data-od-id="why-me-section" className="py-16 md:py-24">
       <div className="mx-auto max-w-7xl px-4 md:px-6">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
@@ -32,7 +34,7 @@ export default function WhyMeSection() {
         <div className="mx-auto grid max-w-5xl gap-8 md:grid-cols-2">
           <div>
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
@@ -43,7 +45,7 @@ export default function WhyMeSection() {
               </div>
               <p className="text-sm leading-relaxed text-fg-2">
                 Ильяс работает на стыке AI, образования, предпринимательства,
-                проектного управления и продуктового мышления. Фокус — не в
+                проектного управления и продуктового мышления. Фокус - не в
                 модных инструментах, а в том, чтобы встроить AI в реальные
                 задачи команды.
               </p>
@@ -53,7 +55,7 @@ export default function WhyMeSection() {
               {approachSteps.map((step, i) => (
                 <motion.div
                   key={step}
-                  initial={{ opacity: 0, x: -10 }}
+                  initial={prefersReducedMotion ? false : { opacity: 0, x: -10 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true, amount: 0.2 }}
                   transition={{
@@ -76,7 +78,7 @@ export default function WhyMeSection() {
             {credibilityCards.map((card, i) => (
               <motion.div
                 key={card.title}
-                initial={{ opacity: 0, y: 12 }}
+                initial={prefersReducedMotion ? false : { opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{

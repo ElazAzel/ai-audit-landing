@@ -1,94 +1,88 @@
 "use client";
 
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 
 const problems = [
   {
-    title: "Хаотичные промпты",
-    desc: "У каждого в команде свои запросы к ChatGPT — нет единого стандарта и качества.",
+    title: "Запросы не повторяются",
+    desc: "У каждого в команде свой способ работать с ChatGPT. Качество результата зависит от человека, а не от системы.",
   },
   {
-    title: "Случайные инструменты",
-    desc: "Кто-то использует Gemini, кто-то Claude, кто-то Midjourney — всё разрозненно.",
+    title: "Инструменты живут отдельно",
+    desc: "Gemini, Claude, Midjourney и другие сервисы используются фрагментарно. Нет общей логики выбора и проверки.",
   },
   {
-    title: "Нет стандартов качества",
-    desc: "Результаты AI никто не проверяет и не улучшает — каждый раз эксперимент с нуля.",
+    title: "Качество не закреплено",
+    desc: "Результаты AI никто не оценивает по единым критериям. Каждый новый запрос снова становится экспериментом.",
   },
   {
-    title: "Нет внедрения",
-    desc: "AI используется «для галочки», а не встроен в реальные рабочие процессы.",
+    title: "AI не встроен в процесс",
+    desc: "Сервисы пробуют ради скорости, но не связывают с продажами, обучением, контентом или поддержкой.",
   },
   {
-    title: "Нет понятной выгоды",
-    desc: "Руководитель не видит измеримого результата от использования AI в команде.",
+    title: "Выгода не видна руководителю",
+    desc: "Невозможно объяснить, что именно стало быстрее, точнее или дешевле после появления AI в команде.",
   },
 ];
 
 export default function ProblemSection() {
+  const prefersReducedMotion = useReducedMotion();
+
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-bg to-accent-light/20 py-16 md:py-24">
-      <div className="mx-auto max-w-7xl px-4 md:px-6">
+    <section
+      data-od-id="problem-section"
+      className="relative overflow-hidden bg-surface py-16 md:py-24"
+    >
+      <div className="mx-auto grid max-w-7xl gap-10 px-4 md:px-6 lg:grid-cols-[0.88fr_1.12fr] lg:items-start">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={prefersReducedMotion ? false : { opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-          className="mb-12 text-center"
+          viewport={{ once: true, amount: 0.25 }}
+          transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+          className="lg:sticky lg:top-28"
         >
-          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.15em] text-muted">
+          <p className="mb-3 text-sm font-medium text-accent">
             Знакомая ситуация?
           </p>
-          <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">
-            AI в команде есть, а системы — нет
+          <h2 className="max-w-xl text-3xl font-semibold tracking-tight text-fg md:text-4xl">
+            AI уже есть. Управляемой системы пока нет.
           </h2>
-          <p className="mx-auto mt-3 max-w-lg text-base leading-relaxed text-fg-2">
-            Большинство команд уже пробуют AI, но делают это хаотично — без
-            системы, стандартов и понятного результата.
+          <p className="mt-4 max-w-lg text-base leading-relaxed text-fg-2">
+            Большинство команд уже пробуют AI, но польза теряется между
+            разрозненными запросами, случайными инструментами и отсутствием
+            стандартов качества.
           </p>
+
+          <div className="mt-8 rounded-[1.25rem] border border-border bg-bg p-5">
+            <p className="text-sm font-semibold text-fg">
+              Следующий шаг не в том, чтобы купить еще один сервис.
+            </p>
+            <p className="mt-2 text-sm leading-relaxed text-fg-2">
+              Сначала нужно понять, где AI действительно меняет рабочий процесс,
+              а где только добавляет шум.
+            </p>
+          </div>
         </motion.div>
 
-        <div className="relative mx-auto max-w-4xl">
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {problems.map((p, i) => (
-              <motion.div
-                key={p.title}
-                initial={{ opacity: 0, y: 24, scale: 0.95 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{
-                  duration: 0.5,
-                  delay: i * 0.1,
-                  ease: [0.16, 1, 0.3, 1],
-                }}
-                className={`rounded-xl border border-border bg-surface p-6 shadow-sm ${
-                  i === problems.length - 1
-                    ? "md:col-span-2 lg:col-span-1 lg:col-start-2"
-                    : ""
-                }`}
-              >
-                <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-full bg-accent-light text-sm font-bold text-accent">
-                  {i + 1}
-                </div>
-                <h3 className="mb-1.5 text-base font-medium text-fg">
-                  {p.title}
-                </h3>
-                <p className="text-sm leading-relaxed text-fg-2">{p.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-10 text-center"
-          >
-            <p className="text-sm text-muted">
-              От хаоса к системе — за 3 дня диагностики или 14 дней внедрения
-            </p>
-          </motion.div>
+        <div className="border-y border-border">
+          {problems.map((p, index) => (
+            <motion.article
+              data-od-id={`problem-signal-${index + 1}`}
+              key={p.title}
+              initial={prefersReducedMotion ? false : { opacity: 0, x: 18 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.25 }}
+              transition={{
+                duration: 0.5,
+                delay: index * 0.05,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+              className="grid gap-3 border-b border-border py-5 last:border-b-0 md:grid-cols-[0.9fr_1.25fr]"
+            >
+              <h3 className="text-base font-semibold text-fg">{p.title}</h3>
+              <p className="text-sm leading-relaxed text-fg-2">{p.desc}</p>
+            </motion.article>
+          ))}
         </div>
       </div>
     </section>
