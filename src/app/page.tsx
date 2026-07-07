@@ -1,65 +1,98 @@
-import Image from "next/image";
+"use client";
+
+import HeroSection from "@/components/HeroSection";
+import ProblemSection from "@/components/ProblemSection";
+import OutcomesSection from "@/components/OutcomesSection";
+import AudienceSection from "@/components/AudienceSection";
+import ProcessSection from "@/components/ProcessSection";
+import PricingSection from "@/components/PricingSection";
+import CalculatorSection from "@/components/CalculatorSection";
+import WhyMeSection from "@/components/WhyMeSection";
+import FitSection from "@/components/FitSection";
+import FAQSection from "@/components/FAQSection";
+import FinalCTA from "@/components/FinalCTA";
+import StickyCTA from "@/components/StickyCTA";
+import { WHATSAPP_LINK, INSTAGRAM_URL, SITE_URL } from "@/lib/data";
+import { MessageCircle, Camera, Globe } from "lucide-react";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
+    <>
+      <nav className="fixed top-0 z-40 w-full border-b border-border/60 bg-white/80 backdrop-blur-md">
+        <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 md:px-6">
+          <span className="text-sm font-semibold tracking-tight text-fg">
+            Ильяс Азелханов
+          </span>
+          <div className="hidden items-center gap-4 md:flex">
             <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+              href="#pricing"
+              className="text-xs font-medium text-fg-2 transition-colors hover:text-accent"
             >
-              Templates
-            </a>{" "}
-            or the{" "}
+              Пакеты
+            </a>
             <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+              href="#calculator"
+              className="text-xs font-medium text-fg-2 transition-colors hover:text-accent"
             >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+              Калькулятор
+            </a>
+            <a
+              href={WHATSAPP_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 rounded-full bg-accent px-4 py-1.5 text-xs font-medium text-white transition-all duration-200 hover:bg-accent-hover"
+            >
+              <MessageCircle className="h-3.5 w-3.5" />
+              WhatsApp
+            </a>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+      </nav>
+
+      <main>
+        <div className="block h-14 md:hidden" />
+        <HeroSection />
+        <ProblemSection />
+        <OutcomesSection />
+        <AudienceSection />
+        <ProcessSection />
+        <PricingSection />
+        <CalculatorSection />
+        <WhyMeSection />
+        <FitSection />
+        <FAQSection />
+        <FinalCTA />
       </main>
-    </div>
+
+      <footer className="border-t border-border bg-surface py-8">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-4 text-center text-xs text-muted md:flex-row md:text-left">
+          <p>Ильяс Азелханов · CEO LinkMAX</p>
+          <div className="flex items-center gap-4">
+            <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-muted transition-colors hover:text-accent">
+              <Camera className="h-3.5 w-3.5" /> Instagram
+            </a>
+            <a href={SITE_URL} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-muted transition-colors hover:text-accent">
+              <Globe className="h-3.5 w-3.5" /> lnkmx.my
+            </a>
+          </div>
+        </div>
+      </footer>
+
+      <StickyCTA />
+
+      <div className="fixed bottom-0 left-0 right-0 z-40 border-t border-border bg-white md:hidden">
+        <div className="flex items-center justify-center p-2">
+          <a
+            href={WHATSAPP_LINK}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex w-full max-w-md items-center justify-center gap-2 rounded-full bg-accent px-5 py-3 text-sm font-medium text-white shadow-sm transition-all duration-200 active:scale-[0.97]"
+          >
+            <MessageCircle className="h-4 w-4" />
+            Написать в WhatsApp
+          </a>
+        </div>
+      </div>
+    </>
   );
 }
