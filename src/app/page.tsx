@@ -1,14 +1,10 @@
 "use client";
 
 import HeroSection from "@/components/HeroSection";
-import ProblemSection from "@/components/ProblemSection";
 import OutcomesSection from "@/components/OutcomesSection";
 import AudienceSection from "@/components/AudienceSection";
-import ProcessSection from "@/components/ProcessSection";
 import PricingSection from "@/components/PricingSection";
-import CalculatorSection from "@/components/CalculatorSection";
-import WhyMeSection from "@/components/WhyMeSection";
-import FitSection from "@/components/FitSection";
+import ProcessSection from "@/components/ProcessSection";
 import FAQSection from "@/components/FAQSection";
 import FinalCTA from "@/components/FinalCTA";
 import StickyCTA from "@/components/StickyCTA";
@@ -55,14 +51,10 @@ export default function Home() {
       <main data-od-id="landing-main">
         <div className="block h-14 md:hidden" />
         <HeroSection />
-        <ProblemSection />
         <OutcomesSection />
         <AudienceSection />
         <PricingSection />
-        <CalculatorSection />
         <ProcessSection />
-        <WhyMeSection />
-        <FitSection />
         <FAQSection />
         <FinalCTA />
       </main>
