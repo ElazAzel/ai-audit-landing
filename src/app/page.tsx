@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <>
       <StickyCTA />
-      <main data-od-id="landing-main">
+      <main>
         <HeroSection />
         <OutcomesSection />
         <AudienceSection />
@@ -22,7 +22,7 @@ export default function Home() {
         <FAQSection />
         <FinalCTA />
       </main>
-      <footer data-od-id="site-footer" className="border-t border-border py-8">
+      <footer className="border-t border-border py-6 md:py-8">
         <div className="mx-auto max-w-7xl px-4 md:px-6">
           <div className="flex flex-wrap items-center justify-between gap-2">
             <p className="text-xs text-muted">
