@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import { motion, useInView, useReducedMotion } from "motion/react";
 import { processSteps } from "@/lib/data";
-import { Clock } from "lucide-react";
+import { Clock, FileText } from "lucide-react";
 
 function ProcessStep({
   step,
@@ -37,11 +37,11 @@ function ProcessStep({
       className="relative flex gap-5 md:gap-8"
     >
       <div className="flex flex-col items-center">
-        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent text-sm font-bold text-white shadow-sm">
+        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent text-sm font-bold text-white">
           {step.step}
         </div>
         {index < processSteps.length - 1 && (
-          <div className="mt-1 h-full w-px bg-gradient-to-b from-accent/30 to-accent/5" />
+          <div className="mt-1 h-full w-px bg-accent/20" />
         )}
       </div>
       <div className="pb-10 md:pb-12">
@@ -55,6 +55,10 @@ function ProcessStep({
         <p className="mt-2 max-w-lg text-sm leading-relaxed text-fg-2">
           {step.description}
         </p>
+        <div className="mt-2 flex items-center gap-1.5 text-xs text-muted">
+          <FileText className="h-3 w-3" />
+          <span className="font-medium text-fg-2">{step.deliverables}</span>
+        </div>
       </div>
     </motion.div>
   );
@@ -64,23 +68,20 @@ export default function ProcessSection() {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <section
-      data-od-id="process-section"
-      className="bg-gradient-to-b from-accent-light/20 to-bg py-16 md:py-24"
-    >
+    <section className="py-16 md:py-24">
       <div className="mx-auto max-w-7xl px-4 md:px-6">
         <motion.div
           initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-          className="mb-10 text-center"
+          className="mb-10 max-w-2xl"
         >
           <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">
             Как проходит работа
           </h2>
-          <p className="mx-auto mt-3 max-w-lg text-base leading-relaxed text-fg-2">
-            Пять этапов - от первой диагностики до работающего AI-сценария в
+          <p className="mt-3 text-base leading-relaxed text-fg-2">
+            Пять этапов — от первой диагностики до работающего AI-сценария в
             команде
           </p>
         </motion.div>

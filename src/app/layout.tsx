@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { JsonLd } from "@/components/JsonLd";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -12,19 +13,66 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const SITE_URL = "https://ai-audit-landing-tau.vercel.app";
+
 export const metadata: Metadata = {
-  title: "AI-аудит и внедрение AI-сценариев для бизнеса | Ильяс Азелханов",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: "AI-аудит и внедрение AI-сценариев для бизнеса | Ильяс Азелханов",
+    template: "%s | Ильяс Азелханов",
+  },
   description:
-    "Практический AI-аудит, воркшопы и внедрение рабочих AI-сценариев для бизнеса, экспертов, EdTech и команд. Промпт-паки, демо-ассистенты и план внедрения за 14 дней.",
-  keywords:
-    "AI-аудит, внедрение AI, ChatGPT для бизнеса, AI-воркшоп, AI для EdTech, AI для малого бизнеса, промпт-пак, AI-ассистент, Алматы, Ильяс Азелханов",
+    "Практический AI-аудит: диагностика, 5-10 готовых сценариев, промпт-пак, демо-ассистент и план внедрения за 14 дней. Для EdTech, экспертов, малого бизнеса, HR и маркетинга. Алматы, онлайн.",
+  keywords: [
+    "AI-аудит",
+    "внедрение AI",
+    "ChatGPT для бизнеса",
+    "AI-воркшоп",
+    "AI для EdTech",
+    "AI для малого бизнеса",
+    "промпт-пак",
+    "AI-ассистент",
+    "автоматизация бизнеса AI",
+    "AI-консультант Алматы",
+    "Ильяс Азелханов",
+    "LinkMAX",
+  ],
+  authors: [{ name: "Ильяс Азелханов", url: "https://lnkmx.my/elazart" }],
+  creator: "Ильяс Азелханов",
+  publisher: "LinkMAX",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  alternates: {
+    canonical: SITE_URL,
+  },
   openGraph: {
-    title: "AI-аудит и внедрение AI-сценариев для бизнеса | Ильяс Азелханов",
-    description:
-      "Практический AI-аудит, воркшопы и внедрение рабочих AI-сценариев для бизнеса, экспертов, EdTech и команд.",
     type: "website",
     locale: "ru_RU",
+    siteName: "AI-аудит | Ильяс Азелханов",
+    title: "AI-аудит и внедрение AI-сценариев для бизнеса | Ильяс Азелханов",
+    description:
+      "Диагностика, сценарии, промпты и демо-ассистент за 14 дней. Чтобы команда использовала AI одинаково и измеримо.",
+    url: SITE_URL,
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "AI-аудит и внедрение AI-сценариев для бизнеса | Ильяс Азелханов",
+    description:
+      "Диагностика, сценарии, промпты и демо-ассистент за 14 дней. Чтобы команда использовала AI одинаково и измеримо.",
+  },
+  verification: {
+    google: "",
+  },
+  category: "technology",
 };
 
 export default function RootLayout({
@@ -38,7 +86,13 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} antialiased`}
     >
-      <body className="min-h-dvh flex flex-col">{children}</body>
+      <head>
+        <link rel="canonical" href={SITE_URL} />
+        <JsonLd />
+      </head>
+      <body className="min-h-dvh flex flex-col" suppressHydrationWarning>
+        {children}
+      </body>
     </html>
   );
 }

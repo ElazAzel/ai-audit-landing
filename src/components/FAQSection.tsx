@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useRef } from "react";
-import { motion, AnimatePresence, useReducedMotion } from "motion/react";
+import { useState, useRef, useEffect } from "react";
+import { motion, useReducedMotion } from "motion/react";
 import { faqItems } from "@/lib/data";
 import { ChevronDown } from "lucide-react";
 
@@ -14,7 +14,14 @@ function FAQItem({
 }) {
   const [open, setOpen] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
+  const [height, setHeight] = useState(0);
   const prefersReducedMotion = useReducedMotion();
+
+  useEffect(() => {
+    if (contentRef.current) {
+      setHeight(open ? contentRef.current.scrollHeight : 0);
+    }
+  }, [open]);
 
   return (
     <motion.div
@@ -22,7 +29,7 @@ function FAQItem({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.1 }}
       transition={{ duration: 0.4, delay: index * 0.05 }}
-      className={`rounded-xl border bg-surface transition-all duration-300 ${
+      className={`rounded-xl border bg-surface ${
         open ? "border-accent/30 shadow-sm" : "border-border"
       }`}
     >
@@ -41,25 +48,15 @@ function FAQItem({
           }`}
         />
       </button>
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            id={`faq-answer-${index}`}
-            ref={contentRef}
-            initial={prefersReducedMotion ? false : { height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={
-              prefersReducedMotion ? { opacity: 0 } : { height: 0, opacity: 0 }
-            }
-            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="overflow-hidden"
-          >
-            <div className="border-t border-border px-5 pb-4 pt-3">
-              <p className="text-sm leading-relaxed text-fg-2">{item.a}</p>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <div
+        id={`faq-answer-${index}`}
+        className="overflow-hidden transition-all duration-300 ease-in-out"
+        style={{ maxHeight: height ? `${height}px` : "0px" }}
+      >
+        <div ref={contentRef} className="border-t border-border px-5 pb-4 pt-3">
+          <p className="text-sm leading-relaxed text-fg-2">{item.a}</p>
+        </div>
+      </div>
     </motion.div>
   );
 }
@@ -68,7 +65,7 @@ export default function FAQSection() {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <section data-od-id="faq-section" className="py-16 md:py-24">
+    <section className="py-16 md:py-24">
       <div className="mx-auto max-w-7xl px-4 md:px-6">
         <motion.div
           initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}

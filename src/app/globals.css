@@ -1,25 +1,28 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #fafafa;
+  --bg: #f6f5f4;
   --surface: #ffffff;
   --fg: #0f172a;
-  --fg-2: #334155;
-  --muted: #64748b;
-  --border: #e2e8f0;
+  --fg-2: #475569;
+  --muted: #94a3b8;
+  --border: rgba(0, 0, 0, 0.08);
   --accent: #2563eb;
   --accent-hover: #1d4ed8;
   --accent-light: #dbeafe;
+  --accent-wash: #eef2ff;
   --accent-glow: #06b6d4;
-  --accent-glow-light: #cffafe;
+  --surface-warm: #f0eeeb;
+  --surface-amber: #fef3c7;
+  --surface-coral: #fee2e2;
+  --surface-sky: #e0f2fe;
+  --surface-midnight: #02093a;
   --success: #16a34a;
   --warn: #d97706;
   --danger: #dc2626;
   --radius: 12px;
   --radius-sm: 8px;
   --radius-pill: 9999px;
-  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-in-out: cubic-bezier(0.76, 0, 0.24, 1);
 }
 
 @theme inline {
@@ -32,8 +35,13 @@
   --color-accent: var(--accent);
   --color-accent-hover: var(--accent-hover);
   --color-accent-light: var(--accent-light);
+  --color-accent-wash: var(--accent-wash);
   --color-accent-glow: var(--accent-glow);
-  --color-accent-glow-light: var(--accent-glow-light);
+  --color-surface-warm: var(--surface-warm);
+  --color-surface-amber: var(--surface-amber);
+  --color-surface-coral: var(--surface-coral);
+  --color-surface-sky: var(--surface-sky);
+  --color-surface-midnight: var(--surface-midnight);
   --color-success: var(--success);
   --color-warn: var(--warn);
   --color-danger: var(--danger);
