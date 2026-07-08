@@ -31,13 +31,13 @@ export default function Home() {
               href="#pricing"
               className="text-xs font-medium text-fg-2 transition-colors hover:text-accent"
             >
-              Пакеты
+              Стоимость
             </a>
             <a
-              href="#calculator"
+              href="#audience"
               className="text-xs font-medium text-fg-2 transition-colors hover:text-accent"
             >
-              Калькулятор
+              Для кого
             </a>
             <a
               href={WHATSAPP_LINK}
@@ -58,9 +58,9 @@ export default function Home() {
         <ProblemSection />
         <OutcomesSection />
         <AudienceSection />
-        <ProcessSection />
         <PricingSection />
         <CalculatorSection />
+        <ProcessSection />
         <WhyMeSection />
         <FitSection />
         <FAQSection />

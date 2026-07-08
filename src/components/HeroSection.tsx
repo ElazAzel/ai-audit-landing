@@ -36,6 +36,12 @@ const auditInputs = [
   "FAQ и поддержка",
 ];
 
+const quickFacts = [
+  { label: "Что делаем", value: "AI-сценарии для вашей команды" },
+  { label: "Срок", value: "от 2 дней до 14 дней" },
+  { label: "Бюджет", value: "от 90 000 ₸" },
+];
+
 export default function HeroSection() {
   const prefersReducedMotion = useReducedMotion();
   const pointerX = useMotionValue(0);
@@ -113,6 +119,21 @@ export default function HeroSection() {
                 <ArrowRight className="h-4 w-4" />
               </button>
             </motion.div>
+            <motion.dl
+              initial={prefersReducedMotion ? false : { opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
+              className="mt-7 grid max-w-2xl gap-3 border-y border-border py-4 sm:grid-cols-3"
+            >
+              {quickFacts.map((fact) => (
+                <div key={fact.label}>
+                  <dt className="text-xs font-medium text-muted">{fact.label}</dt>
+                  <dd className="mt-1 text-sm font-semibold leading-snug text-fg">
+                    {fact.value}
+                  </dd>
+                </div>
+              ))}
+            </motion.dl>
           </div>
 
           <div className="relative hidden md:block">

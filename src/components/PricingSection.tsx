@@ -2,7 +2,7 @@
 
 import { motion, useReducedMotion } from "motion/react";
 import { packages, WHATSAPP_LINK } from "@/lib/data";
-import { Check, Sparkles, MessageCircle } from "lucide-react";
+import { Check, MessageCircle } from "lucide-react";
 
 export default function PricingSection() {
   const prefersReducedMotion = useReducedMotion();
@@ -47,7 +47,7 @@ export default function PricingSection() {
               {pkg.popular && (
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2">
                   <span className="inline-flex items-center gap-1 rounded-full bg-accent px-4 py-1 text-xs font-semibold text-white shadow-sm">
-                    <Sparkles className="h-3 w-3" />
+                    <Check className="h-3 w-3" />
                     Рекомендуем
                   </span>
                 </div>
