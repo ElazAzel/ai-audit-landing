@@ -88,7 +88,7 @@ export default function CalculatorSection() {
     <section
       id="calculator"
       data-od-id="calculator-section"
-      className="bg-gradient-to-b from-bg to-accent-light/20 py-16 md:py-24"
+      className="bg-bg py-16 md:py-24"
     >
       <div className="mx-auto max-w-7xl px-4 md:px-6">
         <motion.div
@@ -118,7 +118,7 @@ export default function CalculatorSection() {
                   <button
                     key={opt.value}
                     onClick={() => set("clientType", opt.value)}
-                    className={`rounded-lg border px-4 py-2.5 text-sm font-medium transition-all duration-200 ${
+                    className={`rounded-lg border px-4 py-2.5 text-sm font-medium transition-colors duration-200 ${
                       form.clientType === opt.value
                         ? "border-accent bg-accent text-white"
                         : "border-border bg-surface text-fg-2 hover:border-accent/30"
@@ -139,7 +139,7 @@ export default function CalculatorSection() {
                   <button
                     key={opt.value}
                     onClick={() => set("teamSize", opt.value)}
-                    className={`rounded-lg border px-4 py-2.5 text-sm font-medium transition-all duration-200 ${
+                    className={`rounded-lg border px-4 py-2.5 text-sm font-medium transition-colors duration-200 ${
                       form.teamSize === opt.value
                         ? "border-accent bg-accent text-white"
                         : "border-border bg-surface text-fg-2 hover:border-accent/30"
@@ -160,7 +160,7 @@ export default function CalculatorSection() {
                   <button
                     key={opt.value}
                     onClick={() => set("need", opt.value)}
-                    className={`w-full rounded-lg border px-4 py-2.5 text-left text-sm font-medium transition-all duration-200 ${
+                    className={`w-full rounded-lg border px-4 py-2.5 text-left text-sm font-medium transition-colors duration-200 ${
                       form.need === opt.value
                         ? "border-accent bg-accent text-white"
                         : "border-border bg-surface text-fg-2 hover:border-accent/30"
@@ -181,7 +181,7 @@ export default function CalculatorSection() {
                   <button
                     key={opt.value}
                     onClick={() => set("demoNeeded", opt.value)}
-                    className={`flex-1 rounded-lg border px-4 py-2.5 text-sm font-medium transition-all duration-200 ${
+                    className={`flex-1 rounded-lg border px-4 py-2.5 text-sm font-medium transition-colors duration-200 ${
                       form.demoNeeded === opt.value
                         ? "border-accent bg-accent text-white"
                         : "border-border bg-surface text-fg-2 hover:border-accent/30"
@@ -202,7 +202,7 @@ export default function CalculatorSection() {
                   <button
                     key={opt.value}
                     onClick={() => set("format", opt.value)}
-                    className={`flex-1 rounded-lg border px-4 py-2.5 text-sm font-medium transition-all duration-200 ${
+                    className={`flex-1 rounded-lg border px-4 py-2.5 text-sm font-medium transition-colors duration-200 ${
                       form.format === opt.value
                         ? "border-accent bg-accent text-white"
                         : "border-border bg-surface text-fg-2 hover:border-accent/30"
@@ -270,7 +270,7 @@ export default function CalculatorSection() {
                     href={`${WHATSAPP_LINK}?text=${encodeURIComponent(message)}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-medium text-white transition-all duration-200 hover:bg-accent-hover active:scale-[0.97]"
+                    className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-medium text-white transition-colors duration-200 hover:bg-accent-hover active:scale-[0.97]"
                   >
                     <MessageCircle className="h-4 w-4" />
                     Отправить расчёт в WhatsApp

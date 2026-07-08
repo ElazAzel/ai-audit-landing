@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { motion, useMotionValueEvent, useReducedMotion, useScroll } from "motion/react";
 import { MessageCircle } from "lucide-react";
 import { WHATSAPP_LINK } from "@/lib/data";
 import { scrollToId } from "@/lib/scroll";
@@ -12,14 +13,13 @@ const NAV_ITEMS = [
 ];
 
 export default function StickyCTA() {
+  const { scrollY } = useScroll();
+  const prefersReducedMotion = useReducedMotion();
   const [visible, setVisible] = useState(false);
 
-  useEffect(() => {
-    const onScroll = () => setVisible(window.scrollY > 700);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    setVisible(latest > 700);
+  });
 
   return (
     <>
@@ -47,7 +47,7 @@ export default function StickyCTA() {
                 href={WHATSAPP_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 rounded-full border border-fg/15 px-4 py-2 text-xs font-semibold text-fg transition-all hover:border-fg/30"
+                className="inline-flex items-center gap-1.5 rounded-full border border-fg/15 px-4 py-2 text-xs font-semibold text-fg transition-colors hover:border-fg/30"
               >
                 <MessageCircle className="h-3 w-3" />
                 Связаться
@@ -57,10 +57,11 @@ export default function StickyCTA() {
         </nav>
       </header>
 
-      <div
-        className={`fixed bottom-0 left-0 right-0 z-40 border-t border-border bg-bg/90 backdrop-blur-md transition-all duration-300 ${
+      <motion.div
+        className={`fixed bottom-0 left-0 right-0 z-40 border-t border-border bg-bg/90 backdrop-blur-md transition-[transform,opacity] duration-300 ${
           visible ? "translate-y-0 opacity-100" : "translate-y-full opacity-0"
         }`}
+        transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.25 }}
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 md:px-6">
           <span className="text-[10px] font-semibold uppercase tracking-[0.1em] text-fg-2">
@@ -76,7 +77,7 @@ export default function StickyCTA() {
             Обсудить
           </a>
         </div>
-      </div>
+      </motion.div>
 
       <nav
         className="fixed bottom-20 right-4 z-40 md:hidden"

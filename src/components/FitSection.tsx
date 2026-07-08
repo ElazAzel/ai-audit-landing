@@ -10,7 +10,7 @@ export default function FitSection() {
   return (
     <section
       data-od-id="fit-section"
-      className="bg-gradient-to-b from-bg to-accent-light/20 py-16 md:py-24"
+      className="bg-bg py-16 md:py-24"
     >
       <div className="mx-auto max-w-7xl px-4 md:px-6">
         <motion.div

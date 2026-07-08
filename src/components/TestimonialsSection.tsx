@@ -8,7 +8,7 @@ export default function TestimonialsSection() {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <section className="border-t border-border py-24 md:py-32">
+    <section data-od-id="testimonials-section" className="border-t border-border py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-4 md:px-6">
         <motion.div
           initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}

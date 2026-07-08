@@ -1,39 +1,42 @@
 "use client";
 
 import { outcomes } from "@/lib/data";
-import { Check } from "lucide-react";
 
 export default function OutcomesSection() {
   return (
-    <section className="border-t border-border py-24 md:py-32">
+    <section data-od-id="outcomes-section" className="border-t border-border py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-4 md:px-6">
-        <div className="mb-14 max-w-2xl">
+        <div className="mb-14 max-w-3xl">
           <p className="mb-3 text-xs font-semibold uppercase tracking-[0.15em] text-accent">
             Артефакты
           </p>
-          <h2 className="text-4xl font-bold leading-[1.0] tracking-[-0.02em] md:text-5xl">
-            5 результатов, которые остаются команде
+          <h2 className="text-4xl font-bold leading-[0.95] tracking-[-0.035em] md:text-6xl">
+            Клиент сразу видит, что останется после работы
           </h2>
         </div>
 
-        <div className="grid gap-4 md:grid-cols-5">
+        <div className="border-y border-border">
           {outcomes.map((outcome, index) => (
-            <div
+            <article
+              data-od-id={`outcome-row-${outcome.id}`}
               key={outcome.id}
-              className="rounded-xl border border-border bg-surface p-6"
+              className="grid gap-5 border-b border-border py-6 last:border-b-0 md:grid-cols-[5rem_1fr_1.25fr]"
             >
-              <span className="mb-4 flex h-8 w-8 items-center justify-center rounded-full bg-accent text-xs font-bold text-white">
-                {index + 1}
+              <span className="font-mono text-xs text-muted">
+                {String(index + 1).padStart(2, "0")}
               </span>
-              <h3 className="text-sm font-bold text-fg">{outcome.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-fg-2">
-                {outcome.short}
-              </p>
-              <p className="mt-4 flex items-center gap-1.5 rounded-[8px] bg-accent-wash px-3 py-2 text-xs font-semibold text-accent">
-                <Check className="h-3 w-3" />
+              <div>
+                <h3 className="text-xl font-bold leading-tight text-fg">
+                  {outcome.title}
+                </h3>
+                <p className="mt-2 max-w-xl text-sm leading-relaxed text-fg-2">
+                  {outcome.short}
+                </p>
+              </div>
+              <p className="text-sm font-semibold leading-relaxed text-accent">
                 {outcome.benefit}
               </p>
-            </div>
+            </article>
           ))}
         </div>
       </div>

@@ -26,7 +26,7 @@ export default function PricingSection() {
     : "";
 
   return (
-    <section id="pricing" className="border-t border-border py-24 md:py-32">
+    <section id="pricing" data-od-id="pricing-section" className="border-t border-border py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-4 md:px-6">
         <div className="mb-14 max-w-2xl">
           <p className="mb-3 text-xs font-semibold uppercase tracking-[0.15em] text-accent">
@@ -92,7 +92,7 @@ export default function PricingSection() {
                 href={`${WHATSAPP_LINK}?text=${encodeURIComponent(`Здравствуйте, Ильяс! Хочу обсудить пакет "${pkg.name}".`)}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`mt-5 inline-flex items-center justify-center gap-1.5 rounded-full px-5 py-2.5 text-xs font-semibold transition-all ${
+                className={`mt-5 inline-flex items-center justify-center gap-1.5 rounded-full px-5 py-2.5 text-xs font-semibold transition-colors ${
                   pkg.popular
                     ? "bg-accent text-white hover:bg-accent-hover"
                     : "border border-fg/15 text-fg hover:border-fg/30"

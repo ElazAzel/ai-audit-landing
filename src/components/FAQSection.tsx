@@ -40,7 +40,7 @@ function FAQItem({ item, index }: { item: (typeof faqItems)[0]; index: number })
       </button>
       <div
         id={`faq-answer-${index}`}
-        className="overflow-hidden transition-all duration-300 ease-in-out"
+        className="overflow-hidden transition-[max-height] duration-300 ease-in-out"
         style={{ maxHeight: height ? `${height}px` : "0px" }}
       >
         <div ref={contentRef} className="border-t border-border px-5 pb-4 pt-3">
@@ -55,7 +55,7 @@ export default function FAQSection() {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <section className="border-t border-border py-24 md:py-32">
+    <section id="faq" data-od-id="faq-section" className="border-t border-border py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-4 md:px-6">
         <motion.div
           initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}

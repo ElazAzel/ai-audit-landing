@@ -5,7 +5,7 @@ import { Clock, FileText } from "lucide-react";
 
 export default function ProcessSection() {
   return (
-    <section className="border-t border-border py-24 md:py-32">
+    <section id="process" data-od-id="process-section" className="border-t border-border py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-4 md:px-6">
         <div className="mb-14 max-w-2xl">
           <p className="mb-3 text-xs font-semibold uppercase tracking-[0.15em] text-accent">
