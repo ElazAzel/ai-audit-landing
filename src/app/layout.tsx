@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { JsonLd } from "@/components/JsonLd";
+import BackgroundAnimation from "@/components/BackgroundAnimation";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -91,7 +92,10 @@ export default function RootLayout({
         <JsonLd />
       </head>
       <body className="min-h-dvh flex flex-col" suppressHydrationWarning>
-        {children}
+        <BackgroundAnimation />
+        <div className="relative z-10 flex flex-col">
+          {children}
+        </div>
       </body>
     </html>
   );
