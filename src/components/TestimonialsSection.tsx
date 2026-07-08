@@ -28,7 +28,6 @@ export default function TestimonialsSection() {
             className="text-3xl font-bold leading-[1.0] tracking-[-0.02em] md:text-5xl"
             delay={0.1}
             stagger={0.04}
-            mode="words"
           >
             Кейсы и результаты
           </TextReveal>
