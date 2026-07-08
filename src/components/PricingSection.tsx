@@ -95,7 +95,7 @@ export default function PricingSection() {
                 className={`mt-5 inline-flex items-center justify-center gap-1.5 rounded-full px-5 py-2.5 text-xs font-semibold transition-all ${
                   pkg.popular
                     ? "bg-accent text-white hover:bg-accent-hover"
-                    : "border border-fg/20 text-fg hover:border-fg/40"
+                    : "border border-fg/15 text-fg hover:border-fg/30"
                 }`}
               >
                 <MessageCircle className="h-3 w-3" />

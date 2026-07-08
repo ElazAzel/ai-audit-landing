@@ -23,7 +23,7 @@ export default function StickyCTA() {
 
   return (
     <>
-      <header className="fixed left-0 right-0 top-0 z-50 border-b border-border backdrop-blur-xl bg-bg/70">
+      <header className="fixed left-0 right-0 top-0 z-50 border-b border-border backdrop-blur-xl bg-bg/80">
         <nav
           className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 md:px-6"
           aria-label="Основная навигация"
@@ -47,7 +47,7 @@ export default function StickyCTA() {
                 href={WHATSAPP_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 rounded-full border border-fg/20 px-4 py-2 text-xs font-semibold text-fg transition-all hover:border-fg/40"
+                className="inline-flex items-center gap-1.5 rounded-full border border-fg/15 px-4 py-2 text-xs font-semibold text-fg transition-all hover:border-fg/30"
               >
                 <MessageCircle className="h-3 w-3" />
                 Связаться
@@ -58,7 +58,7 @@ export default function StickyCTA() {
       </header>
 
       <div
-        className={`fixed bottom-0 left-0 right-0 z-40 border-t border-border bg-bg/95 backdrop-blur-md transition-all duration-300 ${
+        className={`fixed bottom-0 left-0 right-0 z-40 border-t border-border bg-bg/90 backdrop-blur-md transition-all duration-300 ${
           visible ? "translate-y-0 opacity-100" : "translate-y-full opacity-0"
         }`}
       >
@@ -87,7 +87,7 @@ export default function StickyCTA() {
             <li key={item.id}>
               <button
                 onClick={() => scrollToId(item.id)}
-                className="rounded-full border border-border bg-bg/90 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.1em] text-fg-2 backdrop-blur-md"
+                className="rounded-full border border-border bg-bg/85 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.1em] text-fg-2 backdrop-blur-md"
               >
                 {item.label}
               </button>

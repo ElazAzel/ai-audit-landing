@@ -37,7 +37,7 @@ export default function HeroSection() {
             </a>
             <button
               onClick={() => scrollToId("pricing")}
-              className="inline-flex items-center gap-2.5 rounded-full border border-fg/20 px-7 py-3.5 text-sm font-semibold text-fg transition-all hover:border-fg/40 active:scale-[0.97]"
+              className="inline-flex items-center gap-2.5 rounded-full border border-fg/15 px-7 py-3.5 text-sm font-semibold text-fg transition-all hover:border-fg/30 active:scale-[0.97]"
             >
               <ArrowRight className="h-4 w-4" />
               Стоимость и пакеты
