@@ -14,32 +14,29 @@ import { MessageCircle, Camera, Globe } from "lucide-react";
 export default function Home() {
   return (
     <>
-      <nav aria-label="Основная навигация" className="fixed top-0 z-40 w-full border-b border-border/60 bg-white/80 backdrop-blur-md">
+      <nav aria-label="Основная навигация" className="fixed top-0 z-40 w-full border-b border-border bg-white/90 backdrop-blur-md">
         <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 md:px-6">
-          <span className="text-sm font-semibold tracking-tight text-fg">
+          <span className="text-sm font-bold tracking-tight text-fg">
             Ильяс Азелханов
           </span>
-          <div className="hidden items-center gap-4 md:flex" role="list">
+          <div className="hidden items-center gap-6 md:flex">
             <a
               href="#pricing"
-              className="text-xs font-medium text-fg-2 transition-colors hover:text-accent"
-              role="listitem"
+              className="text-xs font-semibold uppercase tracking-[0.05em] text-fg-2 transition-colors hover:text-accent"
             >
               Стоимость
             </a>
             <a
               href="#audience"
-              className="text-xs font-medium text-fg-2 transition-colors hover:text-accent"
-              role="listitem"
+              className="text-xs font-semibold uppercase tracking-[0.05em] text-fg-2 transition-colors hover:text-accent"
             >
-              Для кого
+              Кому подходит
             </a>
             <a
               href={WHATSAPP_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 rounded-full bg-accent px-4 py-1.5 text-xs font-medium text-white transition-all hover:bg-accent-hover"
-              role="listitem"
+              className="inline-flex items-center gap-1.5 rounded-full border border-accent/20 bg-accent px-4 py-1.5 text-xs font-semibold text-white transition-all hover:bg-accent-hover"
             >
               <MessageCircle className="h-3.5 w-3.5" />
               WhatsApp
@@ -54,14 +51,14 @@ export default function Home() {
         <OutcomesSection />
         <AudienceSection />
 
-        <section aria-labelledby="testimonials-heading" className="py-16 md:py-24">
+        <section aria-labelledby="testimonials-heading" className="border-t border-border py-20 md:py-28">
           <div className="mx-auto max-w-7xl px-4 md:px-6">
-            <div className="mb-10 max-w-2xl">
-              <p className="mb-2 text-xs font-semibold uppercase tracking-[0.12em] text-accent">
+            <div className="mb-12 max-w-2xl">
+              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.15em] text-accent">
                 Отзывы
               </p>
-              <h2 id="testimonials-heading" className="text-3xl font-semibold tracking-tight md:text-4xl">
-                Что говорят клиенты
+              <h2 id="testimonials-heading" className="text-4xl font-bold leading-[1.05] tracking-[-0.02em] md:text-5xl">
+                Что говорят те, кто уже работает с AI
               </h2>
             </div>
             <div className="grid gap-6 md:grid-cols-3">
@@ -69,7 +66,7 @@ export default function Home() {
                 <article key={i} className="rounded-xl border border-border bg-white p-6">
                   <p className="text-sm leading-relaxed text-fg-2">&ldquo;{t.text}&rdquo;</p>
                   <footer className="mt-5 border-t border-border pt-4">
-                    <p className="text-sm font-semibold text-fg">{t.name}</p>
+                    <p className="text-sm font-bold text-fg">{t.name}</p>
                     <p className="text-xs text-muted">{t.role}</p>
                   </footer>
                 </article>
@@ -84,14 +81,14 @@ export default function Home() {
         <FinalCTA />
       </main>
 
-      <footer className="border-t border-border bg-surface py-8">
+      <footer className="border-t border-border bg-surface py-10">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-4 text-center text-xs text-muted md:flex-row md:text-left">
-          <p>Ильяс Азелханов — CEO LinkMAX</p>
-          <div className="flex items-center gap-4">
-            <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-muted transition-colors hover:text-accent">
+          <p className="font-semibold text-fg">Ильяс Азелханов — CEO LinkMAX</p>
+          <div className="flex items-center gap-6">
+            <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 font-semibold text-fg-2 transition-colors hover:text-accent">
               <Camera className="h-3.5 w-3.5" /> Instagram
             </a>
-            <a href={SITE_URL} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-muted transition-colors hover:text-accent">
+            <a href={SITE_URL} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 font-semibold text-fg-2 transition-colors hover:text-accent">
               <Globe className="h-3.5 w-3.5" /> lnkmx.my
             </a>
           </div>
@@ -106,7 +103,7 @@ export default function Home() {
             href={WHATSAPP_LINK}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex w-full max-w-md items-center justify-center gap-2 rounded-full bg-accent px-5 py-3 text-sm font-medium text-white shadow-sm transition-all active:scale-[0.97]"
+            className="inline-flex w-full max-w-md items-center justify-center gap-2 rounded-full bg-accent px-5 py-3 text-sm font-semibold text-white transition-all active:scale-[0.97]"
           >
             <MessageCircle className="h-4 w-4" />
             Написать в WhatsApp

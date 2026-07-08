@@ -1,7 +1,6 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { motion, useReducedMotion } from "motion/react";
 import { packages, calculatorOptions, WHATSAPP_LINK } from "@/lib/data";
 import { Check, X, MessageCircle, Calculator } from "lucide-react";
 
@@ -11,7 +10,6 @@ interface CalcForm {
 }
 
 export default function PricingSection() {
-  const prefersReducedMotion = useReducedMotion();
   const [form, setForm] = useState<CalcForm>({ need: "", teamSize: "" });
 
   const result = useMemo(() => {
@@ -29,32 +27,22 @@ export default function PricingSection() {
     : "";
 
   return (
-    <section id="pricing" className="py-16 md:py-24">
+    <section id="pricing" className="border-t border-border py-20 md:py-28">
       <div className="mx-auto max-w-7xl px-4 md:px-6">
-        <motion.div
-          initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-          className="mb-10 max-w-2xl"
-        >
-          <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">
-            Пакеты и стоимость
-          </h2>
-          <p className="mt-3 text-base leading-relaxed text-fg-2">
-            От диагностики за 90 000 ₸ до полной AI-системы.
+        <div className="mb-12 max-w-2xl">
+          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.15em] text-accent">
+            Стоимость
           </p>
-        </motion.div>
+          <h2 className="text-4xl font-bold leading-[1.05] tracking-[-0.02em] md:text-5xl">
+            Пакеты под любую задачу
+          </h2>
+        </div>
 
         <div className="mx-auto grid max-w-5xl gap-6 md:grid-cols-2 lg:grid-cols-4">
-          {packages.map((pkg, i) => (
-            <motion.div
+          {packages.map((pkg) => (
+            <div
               key={pkg.id}
-              initial={prefersReducedMotion ? false : { opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.5, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
-              className={`relative flex flex-col rounded-xl border bg-white p-5 ${
+              className={`relative flex flex-col rounded-xl border bg-white p-6 ${
                 pkg.popular ? "border-accent" : "border-border"
               }`}
             >
@@ -63,15 +51,17 @@ export default function PricingSection() {
                   Рекомендуем
                 </span>
               )}
-              <h3 className="text-base font-semibold text-fg">{pkg.name}</h3>
+              <p className="text-xs font-semibold uppercase tracking-[0.1em] text-accent">
+                {pkg.name}
+              </p>
               <p className="mt-1 text-xs text-fg-2">{pkg.audience}</p>
-              <p className="mt-3 text-2xl font-bold text-fg">
+              <p className="mt-4 text-3xl font-bold text-fg">
                 {pkg.priceLabel || `${pkg.price.toLocaleString()} ₸`}
               </p>
-              <p className="text-[10px] text-muted">{pkg.timeframe}</p>
+              <p className="mt-0.5 text-xs text-muted">{pkg.timeframe}</p>
 
-              <div className="mt-4 flex-1">
-                <p className="mb-1.5 text-[10px] font-semibold uppercase tracking-wide text-success">
+              <div className="mt-5 flex-1">
+                <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.1em] text-success">
                   Входит
                 </p>
                 <ul className="space-y-1.5">
@@ -84,7 +74,7 @@ export default function PricingSection() {
                 </ul>
                 {pkg.missing.length > 0 && (
                   <>
-                    <p className="mb-1.5 mt-4 text-[10px] font-semibold uppercase tracking-wide text-danger">
+                    <p className="mb-2 mt-4 text-[10px] font-semibold uppercase tracking-[0.1em] text-danger/70">
                       Не входит
                     </p>
                     <ul className="space-y-1.5">
@@ -103,35 +93,29 @@ export default function PricingSection() {
                 href={`${WHATSAPP_LINK}?text=${encodeURIComponent(`Здравствуйте, Ильяс! Хочу обсудить пакет "${pkg.name}".`)}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`mt-4 inline-flex items-center justify-center gap-1.5 rounded-[8px] px-4 py-2 text-xs font-medium transition-all ${
+                className={`mt-5 inline-flex items-center justify-center gap-1.5 rounded-full px-5 py-2.5 text-xs font-semibold transition-all ${
                   pkg.popular
                     ? "bg-accent text-white hover:bg-accent-hover"
-                    : "border border-accent/20 bg-accent-light/50 text-accent hover:bg-accent-light"
+                    : "border border-accent/20 bg-white text-accent hover:bg-accent-light"
                 }`}
               >
                 <MessageCircle className="h-3 w-3" />
                 {pkg.cta}
               </a>
-            </motion.div>
+            </div>
           ))}
         </div>
 
-        <motion.div
-          initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.5, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="mx-auto mt-12 max-w-2xl rounded-xl border border-accent/20 bg-accent-wash p-6"
-        >
-          <h3 className="flex items-center gap-2 text-sm font-semibold text-fg">
+        <div className="mx-auto mt-12 max-w-2xl rounded-xl border border-accent/20 bg-accent-wash p-6">
+          <p className="flex items-center gap-2 text-sm font-bold text-fg">
             <Calculator className="h-4 w-4 text-accent" />
             Быстрый расчёт
-          </h3>
+          </p>
           <div className="mt-4 flex flex-wrap gap-3">
             <select
               value={form.need}
               onChange={(e) => setForm((f) => ({ ...f, need: e.target.value }))}
-              className="flex-1 rounded-lg border border-border bg-white px-3 py-2 text-xs text-fg"
+              className="flex-1 rounded-lg border border-border bg-white px-3 py-2.5 text-xs text-fg"
               aria-label="Что нужно"
             >
               <option value="">Что нужно?</option>
@@ -144,7 +128,7 @@ export default function PricingSection() {
             <select
               value={form.teamSize}
               onChange={(e) => setForm((f) => ({ ...f, teamSize: e.target.value }))}
-              className="flex-1 rounded-lg border border-border bg-white px-3 py-2 text-xs text-fg"
+              className="flex-1 rounded-lg border border-border bg-white px-3 py-2.5 text-xs text-fg"
               aria-label="Размер команды"
             >
               <option value="">Размер команды</option>
@@ -158,26 +142,26 @@ export default function PricingSection() {
           {result && recommended && (
             <div className="mt-4 flex flex-wrap items-center justify-between gap-3 rounded-lg border border-border bg-white px-4 py-3">
               <div>
-                <p className="text-[10px] font-medium uppercase tracking-wide text-muted">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.1em] text-muted">
                   Примерно
                 </p>
                 <p className="text-xl font-bold text-fg">
                   {result.price.toLocaleString()} ₸
                 </p>
-                <p className="text-xs text-accent">{recommended.name}</p>
+                <p className="text-xs font-semibold text-accent">{recommended.name}</p>
               </div>
               <a
                 href={`${WHATSAPP_LINK}?text=${encodeURIComponent(message)}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 rounded-[8px] bg-accent px-4 py-2 text-xs font-medium text-white hover:bg-accent-hover"
+                className="inline-flex items-center gap-1.5 rounded-full bg-accent px-5 py-2.5 text-xs font-semibold text-white hover:bg-accent-hover"
               >
                 <MessageCircle className="h-3 w-3" />
-                Отправить в WhatsApp
+                Отправить
               </a>
             </div>
           )}
-        </motion.div>
+        </div>
       </div>
     </section>
   );
