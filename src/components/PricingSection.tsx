@@ -21,19 +21,18 @@ export default function PricingSection() {
   }, [form]);
 
   const recommended = packages.find((p) => p.id === result?.packageId);
-
   const message = result
     ? `Здравствуйте, Ильяс! Хочу обсудить AI-аудит.\nЗапрос: ${calculatorOptions.need.find((n) => n.value === form.need)?.label}\nКоманда: ${calculatorOptions.teamSize.find((t) => t.value === form.teamSize)?.label}\nПредварительный расчёт: ${result.price.toLocaleString()} ₸`
     : "";
 
   return (
-    <section id="pricing" className="border-t border-border py-20 md:py-28">
+    <section id="pricing" className="border-t border-border py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-4 md:px-6">
-        <div className="mb-12 max-w-2xl">
+        <div className="mb-14 max-w-2xl">
           <p className="mb-3 text-xs font-semibold uppercase tracking-[0.15em] text-accent">
             Стоимость
           </p>
-          <h2 className="text-4xl font-bold leading-[1.05] tracking-[-0.02em] md:text-5xl">
+          <h2 className="text-4xl font-bold leading-[1.0] tracking-[-0.02em] md:text-5xl">
             Пакеты под любую задачу
           </h2>
         </div>
@@ -42,7 +41,7 @@ export default function PricingSection() {
           {packages.map((pkg) => (
             <div
               key={pkg.id}
-              className={`relative flex flex-col rounded-xl border bg-white p-6 ${
+              className={`relative flex flex-col rounded-xl border bg-surface p-6 ${
                 pkg.popular ? "border-accent" : "border-border"
               }`}
             >
@@ -66,7 +65,7 @@ export default function PricingSection() {
                 </p>
                 <ul className="space-y-1.5">
                   {pkg.includes.map((item) => (
-                    <li key={item} className="flex items-start gap-1.5 text-xs text-fg">
+                    <li key={item} className="flex items-start gap-1.5 text-xs text-fg-2">
                       <Check className="mt-0.5 h-3 w-3 shrink-0 text-success" />
                       {item}
                     </li>
@@ -74,13 +73,13 @@ export default function PricingSection() {
                 </ul>
                 {pkg.missing.length > 0 && (
                   <>
-                    <p className="mb-2 mt-4 text-[10px] font-semibold uppercase tracking-[0.1em] text-danger/70">
+                    <p className="mb-2 mt-4 text-[10px] font-semibold uppercase tracking-[0.1em] text-danger/60">
                       Не входит
                     </p>
                     <ul className="space-y-1.5">
                       {pkg.missing.map((item) => (
                         <li key={item} className="flex items-start gap-1.5 text-xs text-fg-2">
-                          <X className="mt-0.5 h-3 w-3 shrink-0 text-danger/60" />
+                          <X className="mt-0.5 h-3 w-3 shrink-0 text-danger/50" />
                           {item}
                         </li>
                       ))}
@@ -96,7 +95,7 @@ export default function PricingSection() {
                 className={`mt-5 inline-flex items-center justify-center gap-1.5 rounded-full px-5 py-2.5 text-xs font-semibold transition-all ${
                   pkg.popular
                     ? "bg-accent text-white hover:bg-accent-hover"
-                    : "border border-accent/20 bg-white text-accent hover:bg-accent-light"
+                    : "border border-fg/20 text-fg hover:border-fg/40"
                 }`}
               >
                 <MessageCircle className="h-3 w-3" />
@@ -106,7 +105,7 @@ export default function PricingSection() {
           ))}
         </div>
 
-        <div className="mx-auto mt-12 max-w-2xl rounded-xl border border-accent/20 bg-accent-wash p-6">
+        <div className="mx-auto mt-14 max-w-2xl rounded-xl border border-border bg-surface p-6">
           <p className="flex items-center gap-2 text-sm font-bold text-fg">
             <Calculator className="h-4 w-4 text-accent" />
             Быстрый расчёт
@@ -115,7 +114,7 @@ export default function PricingSection() {
             <select
               value={form.need}
               onChange={(e) => setForm((f) => ({ ...f, need: e.target.value }))}
-              className="flex-1 rounded-lg border border-border bg-white px-3 py-2.5 text-xs text-fg"
+              className="flex-1 rounded-lg border border-border bg-surface-2 px-3 py-2.5 text-xs text-fg"
               aria-label="Что нужно"
             >
               <option value="">Что нужно?</option>
@@ -128,7 +127,7 @@ export default function PricingSection() {
             <select
               value={form.teamSize}
               onChange={(e) => setForm((f) => ({ ...f, teamSize: e.target.value }))}
-              className="flex-1 rounded-lg border border-border bg-white px-3 py-2.5 text-xs text-fg"
+              className="flex-1 rounded-lg border border-border bg-surface-2 px-3 py-2.5 text-xs text-fg"
               aria-label="Размер команды"
             >
               <option value="">Размер команды</option>
@@ -140,7 +139,7 @@ export default function PricingSection() {
             </select>
           </div>
           {result && recommended && (
-            <div className="mt-4 flex flex-wrap items-center justify-between gap-3 rounded-lg border border-border bg-white px-4 py-3">
+            <div className="mt-4 flex flex-wrap items-center justify-between gap-3 rounded-lg border border-border bg-surface-2 px-4 py-3">
               <div>
                 <p className="text-[10px] font-semibold uppercase tracking-[0.1em] text-muted">
                   Примерно

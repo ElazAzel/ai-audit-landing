@@ -1,25 +1,21 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #fff8f6;
-  --surface: #ffffff;
-  --fg: #0f172a;
-  --fg-2: #475569;
-  --muted: #94a3b8;
-  --border: rgba(0, 0, 0, 0.08);
+  --bg: #100904;
+  --surface: #1a120e;
+  --surface-2: #241b15;
+  --fg: #ffedd7;
+  --fg-2: #c4b5a0;
+  --muted: #8a7a6a;
+  --border: rgba(255, 237, 215, 0.1);
+  --border-strong: rgba(255, 237, 215, 0.2);
   --accent: #2563eb;
-  --accent-hover: #1d4ed8;
-  --accent-light: #dbeafe;
-  --accent-wash: #eef2ff;
-  --accent-glow: #06b6d4;
-  --surface-warm: #f0eeeb;
-  --surface-amber: #fef3c7;
-  --surface-coral: #fee2e2;
-  --surface-sky: #e0f2fe;
-  --surface-midnight: #02093a;
-  --success: #16a34a;
-  --warn: #d97706;
-  --danger: #dc2626;
+  --accent-hover: #3b82f6;
+  --accent-light: rgba(37, 99, 235, 0.15);
+  --accent-wash: rgba(37, 99, 235, 0.08);
+  --success: #4ade80;
+  --warn: #fbbf24;
+  --danger: #f87171;
   --radius: 12px;
   --radius-sm: 8px;
   --radius-pill: 9999px;
@@ -28,20 +24,16 @@
 @theme inline {
   --color-bg: var(--bg);
   --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
   --color-fg: var(--fg);
   --color-fg-2: var(--fg-2);
   --color-muted: var(--muted);
   --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
   --color-accent: var(--accent);
   --color-accent-hover: var(--accent-hover);
   --color-accent-light: var(--accent-light);
   --color-accent-wash: var(--accent-wash);
-  --color-accent-glow: var(--accent-glow);
-  --color-surface-warm: var(--surface-warm);
-  --color-surface-amber: var(--surface-amber);
-  --color-surface-coral: var(--surface-coral);
-  --color-surface-sky: var(--surface-sky);
-  --color-surface-midnight: var(--surface-midnight);
   --color-success: var(--success);
   --color-warn: var(--warn);
   --color-danger: var(--danger);
@@ -58,8 +50,8 @@ body {
 }
 
 ::selection {
-  background: var(--accent-light);
-  color: var(--accent);
+  background: rgba(37, 99, 235, 0.3);
+  color: var(--fg);
 }
 
 button,
