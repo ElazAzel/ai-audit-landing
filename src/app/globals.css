@@ -1,31 +1,29 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #f7f8f4;
-  --surface: #ffffff;
-  --surface-2: #eef2ec;
-  --fg: #0e100f;
-  --fg-2: #4e5752;
-  --muted: #77827c;
-  --border: rgba(14, 16, 15, 0.1);
-  --border-strong: rgba(14, 16, 15, 0.2);
-  --accent: #00522d;
-  --accent-hover: #087143;
-  --cream: #dfffd1;
-  --accent-light: rgba(0, 82, 45, 0.1);
-  --accent-wash: rgba(0, 82, 45, 0.05);
-  --success: #16a34a;
-  --warn: #d97706;
-  --danger: #dc2626;
-  --radius: 12px;
-  --radius-sm: 8px;
-  --radius-pill: 9999px;
+  --bg: #080b0d;
+  --bg-alt: #071017;
+  --surface: #14191d;
+  --fg: #e8e2d5;
+  --fg-2: #aeb7b8;
+  --muted: #707a7c;
+  --border: rgba(201, 196, 185, 0.15);
+  --border-strong: rgba(201, 196, 185, 0.3);
+  --accent: #b8ff2c;
+  --accent-hover: #ccff66;
+  --accent-light: rgba(184, 255, 44, 0.08);
+  --accent-wash: rgba(45, 125, 255, 0.08);
+  --blue: #2d7dff;
+  --blue-hover: #5a9aff;
+  --success: #b8ff2c;
+  --danger: #ff5c5c;
+  --radius: 8px;
 }
 
 @theme inline {
   --color-bg: var(--bg);
+  --color-bg-alt: var(--bg-alt);
   --color-surface: var(--surface);
-  --color-surface-2: var(--surface-2);
   --color-fg: var(--fg);
   --color-fg-2: var(--fg-2);
   --color-muted: var(--muted);
@@ -33,17 +31,14 @@
   --color-border-strong: var(--border-strong);
   --color-accent: var(--accent);
   --color-accent-hover: var(--accent-hover);
-  --color-cream: var(--cream);
   --color-accent-light: var(--accent-light);
   --color-accent-wash: var(--accent-wash);
+  --color-blue: var(--blue);
+  --color-blue-hover: var(--blue-hover);
   --color-success: var(--success);
-  --color-warn: var(--warn);
   --color-danger: var(--danger);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-  --radius: var(--radius);
-  --radius-sm: var(--radius-sm);
-  --radius-pill: var(--radius-pill);
 }
 
 body {
@@ -52,8 +47,8 @@ body {
 }
 
 ::selection {
-  background: rgba(0, 82, 45, 0.2);
-  color: var(--fg);
+  background: rgba(184, 255, 44, 0.25);
+  color: #080b0d;
 }
 
 button,

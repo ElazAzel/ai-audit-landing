@@ -21,7 +21,9 @@ function FAQItem({ item, index }: { item: (typeof faqItems)[0]; index: number })
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.1 }}
       transition={{ duration: 0.4, delay: index * 0.05 }}
-      className={`rounded-xl border bg-surface ${open ? "border-accent/40" : "border-border"}`}
+      className={`rounded-[8px] border bg-surface ${
+        open ? "border-[rgba(184,255,44,0.25)]" : "border-border"
+      }`}
     >
       <button
         onClick={() => setOpen(!open)}
@@ -29,7 +31,7 @@ function FAQItem({ item, index }: { item: (typeof faqItems)[0]; index: number })
         aria-expanded={open}
         aria-controls={`faq-answer-${index}`}
       >
-        <span className="pr-4 text-sm font-semibold leading-relaxed text-fg">
+        <span className="pr-4 text-sm font-bold leading-relaxed text-fg">
           {item.q}
         </span>
         <ChevronDown
@@ -40,7 +42,7 @@ function FAQItem({ item, index }: { item: (typeof faqItems)[0]; index: number })
       </button>
       <div
         id={`faq-answer-${index}`}
-        className="overflow-hidden transition-[max-height] duration-300 ease-in-out"
+        className="overflow-hidden transition-all duration-300 ease-in-out"
         style={{ maxHeight: height ? `${height}px` : "0px" }}
       >
         <div ref={contentRef} className="border-t border-border px-5 pb-4 pt-3">
@@ -55,7 +57,7 @@ export default function FAQSection() {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <section id="faq" data-od-id="faq-section" className="border-t border-border py-24 md:py-32">
+    <section className="border-t border-border py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-4 md:px-6">
         <motion.div
           initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
@@ -64,7 +66,7 @@ export default function FAQSection() {
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
           className="mb-14 max-w-2xl"
         >
-          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.15em] text-accent">
+          <p className="mb-3 font-mono text-[10px] font-semibold uppercase tracking-[0.12em] text-blue">
             FAQ
           </p>
           <h2 className="text-4xl font-bold leading-[1.0] tracking-[-0.02em] md:text-5xl">

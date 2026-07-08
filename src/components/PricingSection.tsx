@@ -26,10 +26,10 @@ export default function PricingSection() {
     : "";
 
   return (
-    <section id="pricing" data-od-id="pricing-section" className="border-t border-border py-24 md:py-32">
+    <section id="pricing" className="border-t border-border py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-4 md:px-6">
         <div className="mb-14 max-w-2xl">
-          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.15em] text-accent">
+          <p className="mb-3 font-mono text-[10px] font-semibold uppercase tracking-[0.12em] text-blue">
             Стоимость
           </p>
           <h2 className="text-4xl font-bold leading-[1.0] tracking-[-0.02em] md:text-5xl">
@@ -37,20 +37,20 @@ export default function PricingSection() {
           </h2>
         </div>
 
-        <div className="mx-auto grid max-w-5xl gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <div className="mx-auto grid max-w-5xl gap-4 md:grid-cols-2 lg:grid-cols-4">
           {packages.map((pkg) => (
             <div
               key={pkg.id}
-              className={`relative flex flex-col rounded-xl border bg-surface p-6 ${
-                pkg.popular ? "border-accent" : "border-border"
+              className={`relative flex flex-col rounded-[8px] border bg-surface p-5 ${
+                pkg.popular ? "border-[rgba(184,255,44,0.3)]" : "border-border"
               }`}
             >
               {pkg.popular && (
-                <span className="absolute -top-2.5 left-1/2 -translate-x-1/2 rounded-full bg-accent px-4 py-0.5 text-[10px] font-semibold text-white">
+                <span className="absolute -top-2.5 left-1/2 -translate-x-1/2 rounded-[4px] bg-accent px-3 py-0.5 font-mono text-[9px] font-semibold uppercase tracking-[0.08em] text-[#080b0d]">
                   Рекомендуем
                 </span>
               )}
-              <p className="text-xs font-semibold uppercase tracking-[0.1em] text-accent">
+              <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.08em] text-blue">
                 {pkg.name}
               </p>
               <p className="mt-1 text-xs text-fg-2">{pkg.audience}</p>
@@ -60,20 +60,20 @@ export default function PricingSection() {
               <p className="mt-0.5 text-xs text-muted">{pkg.timeframe}</p>
 
               <div className="mt-5 flex-1">
-                <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.1em] text-success">
+                <p className="mb-2 font-mono text-[9px] font-semibold uppercase tracking-[0.08em] text-accent">
                   Входит
                 </p>
                 <ul className="space-y-1.5">
                   {pkg.includes.map((item) => (
                     <li key={item} className="flex items-start gap-1.5 text-xs text-fg-2">
-                      <Check className="mt-0.5 h-3 w-3 shrink-0 text-success" />
+                      <Check className="mt-0.5 h-3 w-3 shrink-0 text-accent" />
                       {item}
                     </li>
                   ))}
                 </ul>
                 {pkg.missing.length > 0 && (
                   <>
-                    <p className="mb-2 mt-4 text-[10px] font-semibold uppercase tracking-[0.1em] text-danger/60">
+                    <p className="mb-2 mt-4 font-mono text-[9px] font-semibold uppercase tracking-[0.08em] text-danger/60">
                       Не входит
                     </p>
                     <ul className="space-y-1.5">
@@ -92,10 +92,10 @@ export default function PricingSection() {
                 href={`${WHATSAPP_LINK}?text=${encodeURIComponent(`Здравствуйте, Ильяс! Хочу обсудить пакет "${pkg.name}".`)}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`mt-5 inline-flex items-center justify-center gap-1.5 rounded-full px-5 py-2.5 text-xs font-semibold transition-colors ${
+                className={`mt-5 inline-flex items-center justify-center gap-1.5 rounded-[8px] px-4 py-2.5 font-mono text-[10px] font-bold uppercase tracking-[0.06em] transition-all ${
                   pkg.popular
-                    ? "bg-accent text-white hover:bg-accent-hover"
-                    : "border border-fg/15 text-fg hover:border-fg/30"
+                    ? "bg-accent text-[#080b0d] hover:bg-accent-hover"
+                    : "border border-border text-fg hover:border-border-strong"
                 }`}
               >
                 <MessageCircle className="h-3 w-3" />
@@ -105,7 +105,7 @@ export default function PricingSection() {
           ))}
         </div>
 
-        <div className="mx-auto mt-14 max-w-2xl rounded-xl border border-border bg-surface p-6">
+        <div className="mx-auto mt-14 max-w-2xl rounded-[8px] border border-border bg-surface p-5">
           <p className="flex items-center gap-2 text-sm font-bold text-fg">
             <Calculator className="h-4 w-4 text-accent" />
             Быстрый расчёт
@@ -114,7 +114,7 @@ export default function PricingSection() {
             <select
               value={form.need}
               onChange={(e) => setForm((f) => ({ ...f, need: e.target.value }))}
-              className="flex-1 rounded-lg border border-border bg-surface-2 px-3 py-2.5 text-xs text-fg"
+              className="flex-1 rounded-[4px] border border-border bg-bg px-3 py-2.5 text-xs text-fg"
               aria-label="Что нужно"
             >
               <option value="">Что нужно?</option>
@@ -127,7 +127,7 @@ export default function PricingSection() {
             <select
               value={form.teamSize}
               onChange={(e) => setForm((f) => ({ ...f, teamSize: e.target.value }))}
-              className="flex-1 rounded-lg border border-border bg-surface-2 px-3 py-2.5 text-xs text-fg"
+              className="flex-1 rounded-[4px] border border-border bg-bg px-3 py-2.5 text-xs text-fg"
               aria-label="Размер команды"
             >
               <option value="">Размер команды</option>
@@ -139,21 +139,21 @@ export default function PricingSection() {
             </select>
           </div>
           {result && recommended && (
-            <div className="mt-4 flex flex-wrap items-center justify-between gap-3 rounded-lg border border-border bg-surface-2 px-4 py-3">
+            <div className="mt-4 flex flex-wrap items-center justify-between gap-3 rounded-[4px] border border-border bg-bg px-4 py-3">
               <div>
-                <p className="text-[10px] font-semibold uppercase tracking-[0.1em] text-muted">
+                <p className="font-mono text-[9px] font-semibold uppercase tracking-[0.08em] text-muted">
                   Примерно
                 </p>
                 <p className="text-xl font-bold text-fg">
                   {result.price.toLocaleString()} ₸
                 </p>
-                <p className="text-xs font-semibold text-accent">{recommended.name}</p>
+                <p className="text-xs font-semibold text-blue">{recommended.name}</p>
               </div>
               <a
                 href={`${WHATSAPP_LINK}?text=${encodeURIComponent(message)}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 rounded-full bg-accent px-5 py-2.5 text-xs font-semibold text-white hover:bg-accent-hover"
+                className="inline-flex items-center gap-1.5 rounded-[8px] bg-blue px-5 py-2.5 font-mono text-[10px] font-bold uppercase tracking-[0.06em] text-white hover:bg-blue-hover"
               >
                 <MessageCircle className="h-3 w-3" />
                 Отправить

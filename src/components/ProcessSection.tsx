@@ -5,10 +5,10 @@ import { Clock, FileText } from "lucide-react";
 
 export default function ProcessSection() {
   return (
-    <section id="process" data-od-id="process-section" className="border-t border-border py-24 md:py-32">
+    <section className="border-t border-border py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-4 md:px-6">
         <div className="mb-14 max-w-2xl">
-          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.15em] text-accent">
+          <p className="mb-3 font-mono text-[10px] font-semibold uppercase tracking-[0.12em] text-blue">
             Процесс
           </p>
           <h2 className="text-4xl font-bold leading-[1.0] tracking-[-0.02em] md:text-5xl">
@@ -23,7 +23,7 @@ export default function ProcessSection() {
           {processSteps.map((step, index) => (
             <div key={step.step} className="relative flex gap-6 md:gap-10">
               <div className="flex flex-col items-center">
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-accent text-sm font-bold text-white">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[4px] bg-accent text-sm font-bold text-[#080b0d]">
                   {step.step}
                 </div>
                 {index < processSteps.length - 1 && (
@@ -33,8 +33,8 @@ export default function ProcessSection() {
               <div className="mb-10 flex-1 md:mb-14">
                 <div className="flex flex-wrap items-center gap-3">
                   <h3 className="text-lg font-bold text-fg">{step.title}</h3>
-                  <span className="inline-flex items-center gap-1 rounded-full border border-fg/10 bg-accent-wash px-3 py-0.5 text-[10px] font-semibold uppercase tracking-[0.05em] text-accent">
-                    <Clock className="h-3 w-3" />
+                  <span className="inline-flex items-center gap-1 rounded-[4px] border border-border bg-bg px-2.5 py-0.5 font-mono text-[9px] font-semibold uppercase tracking-[0.06em] text-blue">
+                    <Clock className="h-2.5 w-2.5" />
                     {step.duration}
                   </span>
                 </div>

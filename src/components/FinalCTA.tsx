@@ -6,10 +6,10 @@ import { scrollToId } from "@/lib/scroll";
 
 export default function FinalCTA() {
   return (
-    <section data-od-id="final-cta-section" className="border-t border-border bg-surface py-24 md:py-32">
+    <section className="border-t border-border bg-surface py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-4 md:px-6">
         <div className="mx-auto max-w-2xl text-center">
-          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.15em] text-accent">
+          <p className="mb-3 font-mono text-[10px] font-semibold uppercase tracking-[0.12em] text-blue">
             Ильяс Азелханов
           </p>
           <h2 className="text-4xl font-bold leading-[1.0] tracking-[-0.02em] md:text-5xl">
@@ -28,14 +28,14 @@ export default function FinalCTA() {
               href={WHATSAPP_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2.5 rounded-full bg-accent px-8 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-accent-hover active:scale-[0.97]"
+              className="inline-flex items-center gap-2 rounded-[8px] bg-accent px-8 py-3.5 text-sm font-bold text-[#080b0d] transition-all hover:bg-accent-hover active:scale-[0.97]"
             >
               <MessageCircle className="h-4 w-4" />
               Написать в WhatsApp
             </a>
             <button
               onClick={() => scrollToId("pricing")}
-              className="inline-flex items-center gap-2.5 rounded-full border border-fg/15 px-8 py-3.5 text-sm font-semibold text-fg transition-colors hover:border-fg/30 active:scale-[0.97]"
+              className="inline-flex items-center gap-2 rounded-[8px] border border-border px-8 py-3.5 text-sm font-bold text-fg transition-all hover:border-border-strong active:scale-[0.97]"
             >
               <ArrowRight className="h-4 w-4" />
               Смотреть пакеты
